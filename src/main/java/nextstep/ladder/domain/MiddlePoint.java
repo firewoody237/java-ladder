@@ -21,6 +21,10 @@ public class MiddlePoint implements Point {
         );
     }
 
+    private MiddlePoint(MoveDirection moveDirection) {
+        this.moveDirection = moveDirection;
+    }
+
     public static MiddlePoint create(MoveDirection beforeDirection, MoveDirection moveDirection) {
         if (moveDirection.equals(MoveDirection.LEFT)) {
             return createLeft(beforeDirection);
@@ -46,10 +50,6 @@ public class MiddlePoint implements Point {
     private static MiddlePoint createStay(MoveDirection moveDirection) {
         validateWithBefore(moveDirection, MoveDirection.STAY);
         return middlePointCache.get(STAY_CACHE_INDEX);
-    }
-
-    private MiddlePoint(MoveDirection moveDirection) {
-        this.moveDirection = moveDirection;
     }
 
     private static void validateWithBefore(MoveDirection beforeDirection, MoveDirection currentDirection) {

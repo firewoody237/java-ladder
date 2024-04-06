@@ -18,6 +18,10 @@ public class RightSidePoint implements Point {
         );
     }
 
+    private RightSidePoint(MoveDirection moveDirection) {
+        this.moveDirection = moveDirection;
+    }
+
     public static RightSidePoint create(MoveDirection beforeDirection, MoveDirection moveDirection) {
         if (moveDirection.equals(MoveDirection.RIGHT)) {
             throw new IllegalArgumentException("끝나는 위치는 오른쪽을 가리킬 수 없습니다.");
@@ -38,10 +42,6 @@ public class RightSidePoint implements Point {
     private static RightSidePoint createLeft(MoveDirection beforeDirection) {
         validateWithBefore(beforeDirection, MoveDirection.LEFT);
         return rightSidePointCache.get(LEFT_CACHE_INDEX);
-    }
-
-    private RightSidePoint(MoveDirection moveDirection) {
-        this.moveDirection = moveDirection;
     }
 
     private static void validateWithBefore(MoveDirection beforeDirection, MoveDirection currentDirection) {

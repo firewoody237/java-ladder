@@ -5,13 +5,13 @@ public class User {
     public static final int MAXIMUM_NAME_LENGTH = 5;
     private final String name;
 
-    public static User from(String name) {
-        return new User(name);
-    }
-
     private User(String name) {
         validate(name);
         this.name = name;
+    }
+
+    public static User from(String name) {
+        return new User(name);
     }
 
     private void validate(String name) {

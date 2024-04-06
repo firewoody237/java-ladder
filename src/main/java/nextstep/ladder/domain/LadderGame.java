@@ -21,20 +21,14 @@ public class LadderGame {
                 .collect(Collectors.toList());
     }
 
-    public List<String> getParticipants() {
-        return gameInfo.getParticipantsList();
-    }
-
     private String calculateUserWinProduct(String name) {
         int destinationPosition = this.ladder.destinationPosition(this.gameInfo.getUserDepartPosition(name));
 
         return this.gameInfo.getWinProductsOf(destinationPosition);
     }
 
-    private void validateParticipant(String name) {
-        if (!this.gameInfo.hasUserName(name)) {
-            throw new IllegalArgumentException("조회하려는 참여자가 존재하지 않습니다.");
-        }
+    public List<String> getParticipants() {
+        return gameInfo.getParticipantsList();
     }
 
     public List<Line> getLadderInfo() {
@@ -44,5 +38,11 @@ public class LadderGame {
     public String getWinProduct(String name) {
         validateParticipant(name);
         return this.ladderResult.getValueOfIndex(this.gameInfo.getUserDepartPosition(name));
+    }
+
+    private void validateParticipant(String name) {
+        if (!this.gameInfo.hasUserName(name)) {
+            throw new IllegalArgumentException("조회하려는 참여자가 존재하지 않습니다.");
+        }
     }
 }

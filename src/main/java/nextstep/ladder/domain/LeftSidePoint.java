@@ -18,6 +18,10 @@ public class LeftSidePoint implements Point {
         );
     }
 
+    private LeftSidePoint(MoveDirection moveDirection) {
+        this.moveDirection = moveDirection;
+    }
+
     public static LeftSidePoint create(MoveDirection moveDirection) {
         validateFirstDirection(moveDirection);
 
@@ -40,10 +44,6 @@ public class LeftSidePoint implements Point {
 
     private static LeftSidePoint createRight() {
         return leftSidePointCache.get(RIGHT_CACHE_INDEX);
-    }
-
-    private LeftSidePoint(MoveDirection moveDirection) {
-        this.moveDirection = moveDirection;
     }
 
     @Override
