@@ -34,6 +34,10 @@ public class Users {
                 .collect(Collectors.toList());
     }
 
+    public List<User> toList() {
+        return List.copyOf(users);
+    }
+
     public int countOfUsers() {
         return this.users.size();
     }

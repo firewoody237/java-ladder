@@ -28,11 +28,15 @@ public class GameInfo {
         return this.users.toNameList();
     }
 
+    public List<User> getUsersList() {
+        return this.users.toList();
+    }
+
     public int getUserDepartPosition(String name) {
         return this.users.getUserIndex(name);
     }
 
-    public String getWinProductsOf(int destinationPosition) {
+    public WinProduct getWinProductsOf(int destinationPosition) {
         return this.winProducts.getWinProductOf(destinationPosition);
     }
 

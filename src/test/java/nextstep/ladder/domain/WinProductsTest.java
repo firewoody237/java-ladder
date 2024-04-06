@@ -18,8 +18,8 @@ class WinProductsTest {
 
         // then
         Assertions.assertAll(
-                () -> assertThat(winProducts.getWinProductOf(0)).isEqualTo("poppy"),
-                () -> assertThat(winProducts.getWinProductOf(1)).isEqualTo("jetty")
+                () -> assertThat(winProducts.getWinProductOf(0).getProductName()).isEqualTo("poppy"),
+                () -> assertThat(winProducts.getWinProductOf(1).getProductName()).isEqualTo("jetty")
         );
     }
 }

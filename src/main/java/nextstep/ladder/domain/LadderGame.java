@@ -1,6 +1,7 @@
 package nextstep.ladder.domain;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class LadderGame {
@@ -15,13 +16,12 @@ public class LadderGame {
         this.ladderResult = new LadderResult(getResultLadderGame());
     }
 
-    private List<String> getResultLadderGame() {
-        return this.gameInfo.getParticipantsList().stream()
-                .map(this::calculateUserWinProduct)
-                .collect(Collectors.toList());
+    private Map<User, WinProduct> getResultLadderGame() {
+        return this.gameInfo.getUsersList().stream()
+                .collect(Collectors.toMap(user -> user, user -> calculateUserWinProduct(user.name())));
     }
 
-    private String calculateUserWinProduct(String name) {
+    private WinProduct calculateUserWinProduct(String name) {
         int destinationPosition = this.ladder.destinationPosition(this.gameInfo.getUserDepartPosition(name));
 
         return this.gameInfo.getWinProductsOf(destinationPosition);
@@ -37,7 +37,7 @@ public class LadderGame {
 
     public String getWinProduct(String name) {
         validateParticipant(name);
-        return this.ladderResult.getValueOfIndex(this.gameInfo.getUserDepartPosition(name));
+        return this.ladderResult.getUserWinProductOf(name);
     }
 
     private void validateParticipant(String name) {

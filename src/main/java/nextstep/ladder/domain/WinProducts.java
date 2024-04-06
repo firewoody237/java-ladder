@@ -17,8 +17,8 @@ public class WinProducts {
         return new WinProducts(winProducts);
     }
 
-    public String getWinProductOf(int index) {
-        return winProducts.get(index).getProductName();
+    public WinProduct getWinProductOf(int index) {
+        return winProducts.get(index);
     }
 
     public int countOfWinProducts() {
